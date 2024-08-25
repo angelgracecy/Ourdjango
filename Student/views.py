@@ -1,18 +1,11 @@
 from django.shortcuts import render, redirect
-from .models import Student, form
-from django.views.generic.detail import DetailView
+from .models import Student
 
 # Function- based view
 def show_student(request, student_id):
     student = Student.objects.all(id=student_id)
     context = {'student': student}
     return render(request, 'student/show_id.html', context)
-
-# Class-based view
-# class form(DetailView):
-#     model = form
-#     template_name = 'student/form.html'
-#     context_object_name = 'form'
 
 def student_form(request):
     if request.method == 'POST':
